@@ -1,0 +1,61 @@
+1. What is the email address of the sender?
+    - desktop file: "Urgent:.eml"
+        - From: Chief Elf <chief.elf@santaclaus.thm>
+            - chief.elf@santaclaus.thm
+
+2. What is the return address?
+    - desktop file: "Urgent:.eml"
+        - Return-Path: <murphy.evident@bandityeti.thm>
+            - murphy.evident@bandityeti.thm
+
+3. On whose behalf was the email sent?
+    - desktop file: "Urgent:.eml"
+        - From: Chief Elf <chief.elf@santaclaus.thm>
+            - Chief Elf
+
+4. What is the X-spam score?
+    - desktop file: "Urgent:.eml"
+        - X-Pm-Spamscore: 3
+            - 3
+
+5. What is hidden in the value of the Message-ID field?
+    - desktop file: "Urgent:.eml"
+        - Message-Id: <QW9DMjAyMl9FbWFpbF9BbmFseXNpcw==>
+            - decode from base64
+                - open Terminal
+                    - echo "QW9DMjAyMl9FbWFpbF9BbmFseXNpcw==" | base64 -d
+                        - AoC2022_Email_Analysis
+
+6. Visit the email reputation check website provided in the task. What is the reputation result of the sender's email address?
+    - https://emailrep.io/
+        - chief.elf@santaclaus.thm
+            - Risky
+
+7. Check the attachments. What is the filename of the attachment?
+    - desktop file: "Urgent:.eml"
+        - X-Attached: Division_of_labour-Load_share_plan.doc
+            - Division_of_labour-Load_share_plan.doc
+
+8. What is the hash value of the attachment?
+    - open Terminal
+        - cd Desktop/
+            - emlAnalyzer -i Urgent\:.eml --header --html -u --text --extract-all
+            - cd eml_attachments
+                - sha256sum Division_of_labour-Load_share_plan.doc
+                    	- 0827bb9a2e7c0628b82256759f0f888ca1abd6a2d903acdb8e44aca6a1a03467
+
+9. Visit the Virus Total website and use the hash value to search. Navigate to the behaviour section. What is the second tactic marked in the Mitre ATT&CK section?
+    - https://www.virustotal.com/gui/home/search
+        - Search -> 0827bb9a2e7c0628b82256759f0f888ca1abd6a2d903acdb8e44aca6a1a03467
+            - Behavior
+                - Mitre ATT&CK Tactics And Techniques
+                    - second tactic marked
+                        - Defense Evasion 
+
+10. Visit the InQuest website and use the hash value to search. What is the subcategory of the file?
+    - https://labs.inquest.net/
+        - Indicator Lookup
+            - 0827bb9a2e7c0628b82256759f0f888ca1abd6a2d903acdb8e44aca6a1a03467
+                - click on hash to see details
+                    - Subcategory: macro_hunter
+                        - macro_hunter
